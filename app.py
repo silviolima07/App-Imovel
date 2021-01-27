@@ -79,7 +79,7 @@ def main():
         
     elif choice == activities[1]:
         st.sidebar.image(aguia1,caption="", width=300)
-        df = pd.read_csv('CVS/'+file_csv[0])
+        df = pd.read_csv('CSV/'+file_csv[0])
         df.drop(['Area'], axis=1, inplace=True)
         total = str(len(df))
         st.title(activities[1])
