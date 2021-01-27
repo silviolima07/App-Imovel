@@ -49,7 +49,7 @@ def main():
     st.sidebar.image(scrap,caption="", width=300)
 
     activities = ["Home",'VivaReal', 'ImovelWeb', 'Zap',"About"]
-    file_csv = ['CSV/vivareal.csv','CSV/imovelweb.csv', 'CSV/zap.csv']
+    file_csv = ['VivaReal.csv','ImovelWeb.csv', 'Zap.csv']
     choice = st.sidebar.selectbox("Selecione uma opção",activities)
 
     # Definir a data da última atualização
@@ -60,6 +60,9 @@ def main():
    
     #if choice != 'About':
     #    st.write('Última atualizacao: '+ data_update)
+
+
+    
 
     if choice == 'Home':
        
@@ -76,43 +79,40 @@ def main():
         
     elif choice == activities[1]:
         st.sidebar.image(aguia1,caption="", width=300)
-        df = pd.read_csv(file_csv[0])
+        df = pd.read_csv('CVS/'+file_csv[0])
         df.drop(['Area'], axis=1, inplace=True)
         total = str(len(df))
         st.title(activities[1])
         st.subheader("Total de vagas: "+total)
         st.table(df)
         if st.button('Download Dataframe as CSV'):
-            cargo = activities[1].replace(' ', '_')
-            filename = 'indeed_'+cargo+'.csv'
+            filename = file_csv[0]
             tmp_download_link = download_link(df, filename, 'Click here to download your data!')
             st.markdown(tmp_download_link, unsafe_allow_html=True)
         
     elif choice == activities[2]:
         st.sidebar.image(aguia2,caption="", width=300)
-        df = pd.read_csv(file_csv[1])
+        df = pd.read_csv('CSV/'+file_csv[1])
         df.drop(['Area'], axis=1, inplace=True)
         total = str(len(df))
         st.title(activities[2])
         st.subheader("Total de vagas: "+total)
         st.table(df)
         if st.button('Download Dataframe as CSV'):
-            cargo = activities[2].replace(' ', '_')
-            filename = 'indeed_'+cargo+'.csv'
+            filename = file_csv[1]
             tmp_download_link = download_link(df, filename, 'Click here to download your data!')
             st.markdown(tmp_download_link, unsafe_allow_html=True)     
    
     elif choice == activities[3]:
         st.sidebar.image(aguia3,caption="", width=300)
-        df = pd.read_csv(file_csv[2])
+        df = pd.read_csv('CSV/'+file_csv[2])
         df.drop(['Area'], axis=1, inplace=True)
         total = str(len(df))
         st.title(activities[3])
         st.subheader("Total de vagas: "+total)
         st.table(df)
         if st.button('Download Dataframe as CSV'):
-            cargo = activities[3].replace(' ', '_')
-            filename = 'indeed_'+cargo+'.csv'
+            filename = file_csv[2]
             tmp_download_link = download_link(df, filename, 'Click here to download your data!')
             st.markdown(tmp_download_link, unsafe_allow_html=True)
 
@@ -120,6 +120,7 @@ def main():
     elif choice == 'About':
         #st.sidebar.image(about,caption="", width=300, height= 200)
         st.subheader("Built with Streamlit")
+        
         
         st.write("Dados coletados via scrap usando: Selenium e BeautifulSoup.")
         #st.markdown("A coleta dos dados é feita às 9h, 12h, 15h e 18h")
@@ -137,6 +138,8 @@ def main():
         #    html = '<img src onerror="{}">'.format(js)
         #    div = Div(text=html)
         #    st.bokeh_chart(div)
+
+        
     
 
        
