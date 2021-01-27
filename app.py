@@ -80,7 +80,7 @@ def main():
     elif choice == activities[1]:
         st.sidebar.image(aguia1,caption="", width=300)
         df = pd.read_csv('CSV/'+file_csv[0])
-        df.drop(['Area'], axis=1, inplace=True)
+        #df.drop(['Area'], axis=1, inplace=True)
         total = str(len(df))
         st.title(activities[1])
         st.subheader("Total de vagas: "+total)
@@ -93,7 +93,7 @@ def main():
     elif choice == activities[2]:
         st.sidebar.image(aguia2,caption="", width=300)
         df = pd.read_csv('CSV/'+file_csv[1])
-        df.drop(['Area'], axis=1, inplace=True)
+        #df.drop(['Area'], axis=1, inplace=True)
         total = str(len(df))
         st.title(activities[2])
         st.subheader("Total de vagas: "+total)
@@ -106,7 +106,7 @@ def main():
     elif choice == activities[3]:
         st.sidebar.image(aguia3,caption="", width=300)
         df = pd.read_csv('CSV/'+file_csv[2])
-        df.drop(['Area'], axis=1, inplace=True)
+        #df.drop(['Area'], axis=1, inplace=True)
         total = str(len(df))
         st.title(activities[3])
         st.subheader("Total de vagas: "+total)
