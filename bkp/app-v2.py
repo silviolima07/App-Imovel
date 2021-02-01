@@ -48,14 +48,8 @@ def main():
 
     st.sidebar.image(scrap,caption="", width=300)
 
-    #activities = ["Home",'VivaReal', 'ImovelWeb', 'Zap',"About"]
-    #file_csv = ['VivaReal.csv','ImovelWeb.csv', 'Zap.csv']
-    #choice = st.sidebar.selectbox("Selecione uma opção",activities)
-
     activities = ["Home",'VivaReal', 'ImovelWeb', 'Zap',"About"]
     file_csv = ['VivaReal.csv','ImovelWeb.csv', 'Zap.csv']
-    cidades_estado = ['Sao-Paulo-SP','Porto-Alegre-RGS', 'Rio-de-Janeiro-RJ', 'Belo-Horizonte-MG']
-    cidades_csv = ['sao-paulo.csv','porto-alegre.csv', 'rio-de-janeiro.csv', 'belo-horizonte.csv']
     choice = st.sidebar.selectbox("Selecione uma opção",activities)
 
     # Definir a data da última atualização
@@ -84,57 +78,17 @@ def main():
         col3.image(aguia3, width=200, height=300)
         
     elif choice == activities[1]:
-        
-        cidade = st.sidebar.selectbox("Selecione uma cidade",cidades_estado)
-        if cidade == cidades_estado[0]: # Sao Paulo - SP
-            df = pd.read_csv('CSV-Cidade/'+activities[1]+'/'+cidades_csv[0])
-            total = str(len(df))
-            st.title(activities[1] + " : "+cidades_estado[0])
-            st.sidebar.image(aguia1,caption="", width=300)
-            st.subheader("Total de anuncios: "+total)
-            st.table(df)
-            if st.button('Download Dataframe as CSV'):
-                filename = cidades_csv[0]
-                tmp_download_link = download_link(df, filename, 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
-       
-        elif cidade == cidades_estado[1]: # Porto Alegre - RGS
-            df = pd.read_csv('CSV-Cidade/'+activities[1]+'/'+cidades_csv[1])
-            total = str(len(df))
-            st.title(activities[1] + " : "+cidades_estado[1])
-            st.sidebar.image(aguia1,caption="", width=300)
-            st.subheader("Total de anuncios: "+total)
-            st.table(df)
-            if st.button('Download Dataframe as CSV'):
-                filename = cidades_csv[1]
-                tmp_download_link = download_link(df, filename, 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
-            
-
-        elif cidade == cidades_estado[2]: # Rio de Janeiro - RJ
-            df = pd.read_csv('CSV-Cidade/'+activities[1]+'/'+cidades_csv[2])
-            total = str(len(df))
-            st.title(activities[1] + " : "+cidades_estado[2])
-            st.sidebar.image(aguia1,caption="", width=300)
-            st.subheader("Total de anuncios: "+total)
-            st.table(df)
-            if st.button('Download Dataframe as CSV'):
-                filename = cidades_csv[2]
-                tmp_download_link = download_link(df, filename, 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
-
-        elif cidade == cidades_estado[3]: # Belo Horizonte - MG
-            df = pd.read_csv('CSV-Cidade/'+activities[1]+'/'+cidades_csv[3])
-            total = str(len(df))
-            st.title(activities[1] + " : "+cidades_estado[3])
-            st.sidebar.image(aguia1,caption="", width=300)
-            st.subheader("Total de anuncios: "+total)
-            st.table(df)
-            if st.button('Download Dataframe as CSV'):
-                filename = cidades_csv[0]
-                tmp_download_link = download_link(df, filename, 'Click here to download your data!')
-                st.markdown(tmp_download_link, unsafe_allow_html=True)
-
+        st.sidebar.image(aguia1,caption="", width=300)
+        df = pd.read_csv('CSV/'+file_csv[0])
+        #df.drop(['Area'], axis=1, inplace=True)
+        total = str(len(df))
+        st.title(activities[1])
+        st.subheader("Total de vagas: "+total)
+        st.table(df)
+        if st.button('Download Dataframe as CSV'):
+            filename = file_csv[0]
+            tmp_download_link = download_link(df, filename, 'Click here to download your data!')
+            st.markdown(tmp_download_link, unsafe_allow_html=True)
         
     elif choice == activities[2]:
         st.sidebar.image(aguia2,caption="", width=300)
